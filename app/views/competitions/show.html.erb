@@ -1,0 +1,21 @@
+<h1><%= @competition.name%> Info:</h1>
+
+Location: <%= @competition.location%> Sport: <%= @competition.sport%>
+
+<h3>Participating Teams:</h3>
+<% @competition.teams.each do |team| %>
+  Name: <%= team.nickname %><br>
+  Town: <%= team.hometown %><br>
+  <br>
+<% end %>
+
+<p>Avg Player Age: <%= @competition.avg_player_age%></p><br>
+
+<p>
+<%= form_with url: competition_teams_path(@competition), local: true do |form| %>
+    <%= form.label "Add Team Name", id: :nickname %>
+    <%= form.text_field :nickname %><br>
+    <%= form.hidden_field :competition_id, value: @competition.id %>
+    <%= form.submit "Add Team" %>
+<% end %>
+</p>

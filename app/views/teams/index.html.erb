@@ -1,0 +1,13 @@
+<h1>Teams Info:</h1>
+<% @teams.order_by_age.each do |team| %>
+  <p id="team-<%= team.id %>">
+  Name: <%= team.nickname %><br>
+  Town: <%= team.hometown %><br>
+  Players:<br>
+  <% team.players.each do |player| %>
+    Name: <%= player.name %><br>
+    Age: <%= player.age %><br>
+  <% end %>
+  </p>
+  <br>
+<% end %>
